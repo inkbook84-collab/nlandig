@@ -51,6 +51,9 @@ export default async function Home() {
       <footer style={{ backgroundColor: 'var(--color-navy-900)', color: 'white', padding: '40px 0', textAlign: 'center' }}>
         <div className="container">
           <p>&copy; 2024 책통클럽 & 공필왕 All Rights Reserved.</p>
+          <div style={{ marginTop: '20px', fontSize: '0.8rem' }}>
+            <a href="/admin/login" style={{ color: '#4a5568', textDecoration: 'none' }}>관리자 로그인</a>
+          </div>
         </div>
       </footer>
     </main>
