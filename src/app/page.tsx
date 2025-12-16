@@ -10,11 +10,20 @@ export const dynamic = 'force-dynamic';
 
 async function getContent() {
   try {
-    await dbConnect();
-    const contents = await Content.find({});
-    return contents;
+    const conn = await dbConnect();
+    if (!conn) return [];
+
+    // Check if Content model exists and fetch
+    // Use try-catch specifically for the find operation
+    try {
+      const contents = await Content.find({});
+      return contents;
+    } catch (innerErr) {
+      console.error('Error finding content:', innerErr);
+      return [];
+    }
   } catch (e) {
-    console.error(e);
+    console.error('Error in getContent:', e);
     return [];
   }
 }
