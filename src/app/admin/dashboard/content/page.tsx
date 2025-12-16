@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 
+import RichEditor from '@/components/admin/RichEditor';
+
 export default function ContentManager() {
     const [contents, setContents] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
@@ -80,23 +82,20 @@ export default function ContentManager() {
                     </h2>
 
                     <div style={{ marginBottom: '20px' }}>
-                        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>제목</label>
-                        <input
-                            type="text"
+                        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>제목 (HTML 지원)</label>
+                        <RichEditor
                             value={item.title}
-                            onChange={(e) => handleChange(index, 'title', e.target.value)}
-                            style={{ width: '100%', padding: '10px', border: '1px solid #e5e7eb', borderRadius: '4px' }}
+                            onChange={(val) => handleChange(index, 'title', val)}
                             placeholder="제목을 입력하세요"
                         />
                     </div>
 
                     <div style={{ marginBottom: '20px' }}>
-                        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>내용</label>
-                        <textarea
+                        <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>본문 (HTML 지원)</label>
+                        <RichEditor
                             value={item.body}
-                            onChange={(e) => handleChange(index, 'body', e.target.value)}
-                            style={{ width: '100%', minHeight: '150px', padding: '10px', border: '1px solid #e5e7eb', borderRadius: '4px', resize: 'vertical' }}
-                            placeholder="내용을 입력하세요 (줄바꿈 가능)"
+                            onChange={(val) => handleChange(index, 'body', val)}
+                            placeholder="내용을 입력하세요"
                         />
                     </div>
 
